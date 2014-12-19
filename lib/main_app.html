@@ -12,11 +12,11 @@
 <polymer-element name="main-app">
   <template>
     <highcharts-polymer chartOptions="{{basicLineChartOptions}}"
-          title="{{basicLineChartTitle}}" subtitle="Monthly Average Temperature" 
+          chartTitle="{{basicLineChartTitle}}" subtitle="Monthly Average Temperature" 
           type="line" borderColor="#CCC" creditsEnabled="false"
           borderWidth="1" borderRadius="8" backgroundColor="rgba(0,0,0,0)">
       <highcharts-x-axis categories="['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']"></highcharts-x-axis>
-      <highcharts-y-axis title="Temperatura (ºC)"></highcharts-y-axis>
+      <highcharts-y-axis axisTitle="Temperatura (ºC)"></highcharts-y-axis>
       <highcharts-series name="Ponferrada"
           type="column"
           numData="[17.0, 16.9, 19.5, 24.5, 28.2, 31.5, 35.2, 36.5, 33.3, 28.3, 23.9, 19.6]"></highcharts-series>
@@ -30,14 +30,14 @@
     <button on-click="{{changeSomething}}">Change Something</button>
     
     <highcharts-polymer chartOptions="{{pieChartOptions}}"
-          title="Pie Chart" borderColor="#CCC" creditsEnabled="false"
+          chartTitle="Pie Chart" borderColor="#CCC" creditsEnabled="false"
           borderWidth="1" borderRadius="8" backgroundColor="rgba(0,0,0,0)">
       <highcharts-series name="Browser Share" type="pie"
           data="{{pieChartData}}"></highcharts-series>
     </highcharts-polymer>
     
     <highcharts-polymer 
-          title="Bubble Chart" type="bubble" borderColor="#CCC" creditsEnabled="false"
+          chartTitle="Bubble Chart" type="bubble" borderColor="#CCC" creditsEnabled="false"
           borderWidth="1" borderRadius="8" backgroundColor="rgba(0,0,0,0)">
       <highcharts-series numData="{{bubbleSeries1}}"></highcharts-series>
       <highcharts-series numData="{{bubbleSeries2}}"></highcharts-series>
@@ -45,10 +45,10 @@
     </highcharts-polymer>
     
     <highcharts-polymer
-          title="Basic Bar" type="bar" borderColor="#CCC" creditsEnabled="false"
+          chartTitle="Basic Bar" type="bar" borderColor="#CCC" creditsEnabled="false"
           borderWidth="1" borderRadius="8" backgroundColor="rgba(0,0,0,0)">
       <highcharts-x-axis categories="['Africa', 'America', 'Asia', 'Europe', 'Oceania']"></highcharts-x-axis>
-      <highcharts-y-axis min="0" title=""></highcharts-y-axis>
+      <highcharts-y-axis min="0" axisTitle=""></highcharts-y-axis>
       <highcharts-series name="Year 1800" numData="[107, 31, 635, 203, 2]"></highcharts-series>
       <highcharts-series name="Year 1900" numData="[133, 156, 947, 408, 6]"></highcharts-series>
       <highcharts-series name="Year 2008" numData="[973, 914, 4054, 732, 34]"></highcharts-series>
