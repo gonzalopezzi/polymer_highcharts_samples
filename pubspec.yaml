@@ -7,8 +7,8 @@ environment:
 dependencies:
   browser: any
   polymer: '>=0.15.0 <0.16.0'
-  polymer_highcharts:
-    path: C:/Users/gonzalo.pezzi/Downloads/dart_workspace/polymer_highcharts/
+  polymer_highcharts: any
+#    path: C:/Users/gonzalo.pezzi/Downloads/dart_workspace/polymer_highcharts/
 transformers:
 - polymer:
     entry_points: web/index.html
