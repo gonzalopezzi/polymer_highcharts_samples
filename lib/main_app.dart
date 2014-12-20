@@ -7,6 +7,8 @@ import 'package:highcharts_options/chart_options.dart';
 /// A Polymer `<main-app>` element.
 @CustomTag('main-app')
 class MainApp extends PolymerElement {
+  @observable String appState = "basicLine";
+  
   @observable String basicLineChartTitle = "Basic Line";
   @observable HighChart basicLineChartOptions = new HighChart () 
                         ..tooltip = (new Tooltip()
@@ -61,6 +63,10 @@ class MainApp extends PolymerElement {
 
   void changeSomething (_) {
     basicLineChartOptions.title = (new Title ()..text = "New Title");
+  }
+  
+  void menuItemSelectHandler (event, detail, target) {
+    appState = detail;
   }
   
 }

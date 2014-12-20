@@ -1,0 +1,18 @@
+<!--
+  Copyright (c) 2014, <your name>. All rights reserved. Use of this source code
+  is governed by a BSD-style license that can be found in the LICENSE file.
+-->
+
+<!-- import polymer-element's definition -->
+<link rel="import" href="../../packages/polymer/polymer.html">
+
+<polymer-element name="main-menu">
+  <template>
+    <ul>
+      <template repeat="{{item in menuItems}}">
+        <li data-state="{{item.state}}" on-click="{{menuItemClick}}">{{item.name}}</li>  
+      </template>
+    </ul>
+  </template>
+  <script type="application/dart" src="main_menu.dart"></script>
+</polymer-element>
