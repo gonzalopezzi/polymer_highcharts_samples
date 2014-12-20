@@ -3,6 +3,7 @@
 
 import 'package:polymer/polymer.dart';
 import 'package:highcharts_options/chart_options.dart';
+import 'package:PolymerHighchartsTest/basic_line_with_labels.dart';
 
 /// A Polymer `<main-app>` element.
 @CustomTag('main-app')
@@ -67,6 +68,7 @@ class MainApp extends PolymerElement {
   
   void menuItemSelectHandler (event, detail, target) {
     appState = detail;
+    this.shadowRoot.children.add(new BasicLineWidthLabels());
   }
   
 }
