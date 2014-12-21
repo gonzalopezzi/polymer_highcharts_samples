@@ -7,8 +7,11 @@ environment:
 dependencies:
   browser: any
   polymer: '>=0.15.0 <0.16.0'
+  core_elements: any
   polymer_highcharts: #any
     path: C:/Gonzalo/trabajos/dart/PolymerHighcharts/
 transformers:
 - polymer:
     entry_points: web/index.html
+    inline_stylesheets:
+      lib/css/sample.css: false

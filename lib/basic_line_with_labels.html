@@ -12,29 +12,35 @@
 
 <polymer-element name="basic-line-with-labels">
   <template>
-    <highcharts-polymer  chartTitle="Basic Line with Labels" 
-          subtitle="Monthly Average Temperature" 
-          type="line" borderColor="#CCC" creditsEnabled="false"
-          borderWidth="1" borderRadius="8" backgroundColor="rgba(0,0,0,0)"
-          plotOptions="
-          {
-              'line': {
-                        'dataLabels': {
-                            'enabled': true
-                        }, 
-                        'enableMouseTracking': false
-              }
-          }
-          ">
-      <highcharts-x-axis categories="['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']"></highcharts-x-axis>
-      <highcharts-y-axis axisTitle="Temperatura (ºC)"></highcharts-y-axis>
-      <highcharts-series name="Tokyo"
-          type="line"
-          numData="[7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]"></highcharts-series>
-      <highcharts-series name="London"
-          type="line"
-          numData="[3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]"></highcharts-series>
-    </highcharts-polymer> 
+    <link rel="stylesheet" href="css/sample.css">
+    <div class="card">
+      <highcharts-polymer  chartTitle="Basic Line with Labels" 
+            subtitle="Monthly Average Temperature" 
+            type="line" creditsEnabled="false"
+            backgroundColor="rgba(0,0,0,0)"
+            plotOptions="
+            {
+                'line': {
+                          'dataLabels': {
+                              'enabled': true
+                          }, 
+                          'enableMouseTracking': false
+                }
+            }
+            ">
+        <highcharts-x-axis categories="['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']"></highcharts-x-axis>
+        <highcharts-y-axis axisTitle="Temperatura (ºC)"></highcharts-y-axis>
+        <highcharts-series name="Tokyo"
+            type="line"
+            numData="[7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]"></highcharts-series>
+        <highcharts-series name="London"
+            type="line"
+            numData="[3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]"></highcharts-series>
+      </highcharts-polymer> 
+    </div>
+    <div class="card code">
+      <pre>{{code}}</pre>
+    </div>
   </template>
   <script type="application/dart" src="basic_line_with_labels.dart"></script>
 </polymer-element>

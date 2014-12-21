@@ -5,128 +5,85 @@
 
 <!-- import polymer-element's definition -->
 <link rel="import" href="../../packages/polymer/polymer.html">
+
+<link rel="import" href="main_menu.html">
+
+<link rel="import" href="highcharts_tutorial.html">
 <link rel="import" href="basic_line.html">
 <link rel="import" href="basic_line_with_labels.html">
-<link rel="import" href="main_menu.html">
-<!--
-<link rel="import" href="../../packages/polymer_highcharts/highcharts_polymer_component.html">
-<link rel="import" href="../../packages/polymer_highcharts/highcharts_series.html">
-<link rel="import" href="../../packages/polymer_highcharts/highcharts_x_axis.html">
-<link rel="import" href="../../packages/polymer_highcharts/highcharts_y_axis.html">
--->
+<link rel="import" href="pie_chart.html">
+<link rel="import" href="bubble_chart.html">
+<link rel="import" href="basic_bar.html">
+<link rel="import" href="stacked_bar.html">
+<link rel="import" href="stacked_area.html">
+
+<link rel="import" href="../../packages/core_elements/core_scaffold.html">
+<link rel="import" href="../../packages/core_elements/core_header_panel.html">
+<link rel="import" href="../../packages/core_elements/core_toolbar.html">
+<link rel="import" href="../../packages/core_elements/core_menu.html">
+<link rel="import" href="../../packages/core_elements/core_item.html">
+
 <polymer-element name="main-app">
   <template>
-    <p>{{appState}}</p>
-    <main-menu on-menu-item-select="{{menuItemSelectHandler}}"></main-menu>
-    <basic-line hidden?="{{appState != 'basicLine'}}"></basic-line>
-    <basic-line-with-labels hidden?="{{appState != 'basicLineWithLabels'}}"></basic-line-with-labels>
-<!--    <highcharts-polymer chartTitle="Basic Line"  
-          subtitle="Monthly Average Temperature" 
-          type="line" borderColor="#CCC" creditsEnabled="false"
-          borderWidth="1" borderRadius="8" backgroundColor="rgba(0,0,0,0)">
-      <highcharts-x-axis categories="['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']"></highcharts-x-axis>
-      <highcharts-y-axis axisTitle="Temperatura (ºC)"></highcharts-y-axis>
-      <highcharts-series name="Tokyo"
-          type="line"
-          numData="[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]"></highcharts-series>
-      <highcharts-series name="New York"
-          type="line"
-          numData="[-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]"></highcharts-series>
-    </highcharts-polymer>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      
+      core-scaffold {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+      
+      .content {
+        background-color: #fff;
+        height: 5000px;
+        padding: 20px;
+      }
+      
+      /* some default styles for mode="cover" on core-scaffold */
+      core-scaffold[mode=cover]::shadow core-header-panel::shadow #mainContainer {
+        left: 120px;
+      }
+      
+      core-scaffold[mode=cover] .content {
+        margin: 20px 100px 20px 0;
+      }
+      
+      .general-info {
+        margin: 20px 10px 10px 10px;
+        border-top: solid 1px #CCC;
+        padding-top: 20px;
+        font-size: 14px;
+      }
+      
+    </style>
+  
+    <core-scaffold>
+      <core-header-panel navigation flex mode="seamed">
+        <core-toolbar style="background-color: #526E9C; color: #fff;">Polymer Highcharts</core-toolbar>
+        <core-menu>
+          <main-menu on-menu-item-select="{{menuItemSelectHandler}}"></main-menu>  
+        </core-menu>
+        <div class="general-info">
+          This page contains examples of <a href="https://pub.dartlang.org/packages/polymer_highcharts">Polymer Highcharts</a> package for Dart.<br>
+          To see the full code of this samples project, go to <a href="https://github.com/gonzalopezzi/polymer_highcharts_samples">this github site</a>
+        </div>
+      </core-header-panel>
+      
+      <div tool>{{pageName}}</div>
     
-    <highcharts-polymer  chartTitle="Basic Line with Labels" 
-          subtitle="Monthly Average Temperature" 
-          type="line" borderColor="#CCC" creditsEnabled="false"
-          borderWidth="1" borderRadius="8" backgroundColor="rgba(0,0,0,0)"
-          plotOptions="
-          {
-              'line': {
-                        'dataLabels': {
-                            'enabled': true
-                        }, 
-                        'enableMouseTracking': false
-              }
-          }
-          ">
-      <highcharts-x-axis categories="['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']"></highcharts-x-axis>
-      <highcharts-y-axis axisTitle="Temperatura (ºC)"></highcharts-y-axis>
-      <highcharts-series name="Tokyo"
-          type="line"
-          numData="[7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]"></highcharts-series>
-      <highcharts-series name="London"
-          type="line"
-          numData="[3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]"></highcharts-series>
-    </highcharts-polymer> 
+      <div id="main-content">
+        <highcharts-tutorial></highcharts-tutorial>
+      </div>
+      
+    </core-scaffold>
     
-    <highcharts-polymer chartTitle="Pie Chart" 
-          borderColor="#CCC" creditsEnabled="false"
-          borderWidth="1" borderRadius="8" backgroundColor="rgba(0,0,0,0)">
-      <highcharts-series name="Browser Share" type="pie"
-          data="{{pieChartData}}"></highcharts-series>
-    </highcharts-polymer>
     
-    <highcharts-polymer 
-          chartTitle="Bubble Chart" type="bubble" borderColor="#CCC" creditsEnabled="false"
-          borderWidth="1" borderRadius="8" backgroundColor="rgba(0,0,0,0)">
-      <highcharts-series numData="{{bubbleSeries1}}"></highcharts-series>
-      <highcharts-series numData="{{bubbleSeries2}}"></highcharts-series>
-      <highcharts-series numData="{{bubbleSeries3}}"></highcharts-series>
-    </highcharts-polymer>
     
-    <highcharts-polymer
-          chartTitle="Basic Bar" type="bar" borderColor="#CCC" creditsEnabled="false"
-          borderWidth="1" borderRadius="8" backgroundColor="rgba(0,0,0,0)">
-      <highcharts-x-axis categories="['Africa', 'America', 'Asia', 'Europe', 'Oceania']"></highcharts-x-axis>
-      <highcharts-y-axis min="0" axisTitle=""></highcharts-y-axis>
-      <highcharts-series name="Year 1800" numData="[107, 31, 635, 203, 2]"></highcharts-series>
-      <highcharts-series name="Year 1900" numData="[133, 156, 947, 408, 6]"></highcharts-series>
-      <highcharts-series name="Year 2008" numData="[973, 914, 4054, 732, 34]"></highcharts-series>
-    </highcharts-polymer>
-    
-    <highcharts-polymer
-          chartTitle="Stacked Bar" type="bar" borderColor="#CCC" creditsEnabled="false"
-          borderWidth="1" borderRadius="8" backgroundColor="rgba(0,0,0,0)"
-          plotOptions="
-            {
-              'series': {
-                'stacking': 'normal'
-              }
-            }
-          ">
-      <highcharts-x-axis categories="['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']"></highcharts-x-axis> 
-      <highcharts-y-axis min="0" axisTitle="Total Fruit Consumption"></highcharts-y-axis>
-      <highcharts-series name="John"  numData="[5, 3, 4, 7, 2]"></highcharts-series>
-      <highcharts-series name="Jane"  numData="[2, 2, 3, 2, 1]"></highcharts-series>
-      <highcharts-series name="Joe"   numData="[3, 4, 4, 2, 5]"></highcharts-series>
-    </highcharts-polymer>
-    
-    <highcharts-polymer
-          chartTitle="Stacked Area" type="area" 
-          subtitle="Historic and Estimated Worldwide Population Growth by Region" 
-          borderColor="#CCC" creditsEnabled="false"
-          borderWidth="1" borderRadius="8" backgroundColor="rgba(0,0,0,0)"
-          plotOptions="
-            {
-              'area': {
-                'stacking': 'normal', 
-                'lineColor': '#666666', 
-                'lineWidth': 1, 
-                'marker': {
-                  'lineWidth': 1, 
-                  'lineColor': '#666666'
-                }
-              }
-            }
-          ">
-      <highcharts-x-axis categories="['1750', '1800', '1850', '1900', '1950', '1999', '2050']"></highcharts-x-axis> 
-      <highcharts-y-axis min="0" axisTitle="Billions"></highcharts-y-axis>
-      <highcharts-series name="Asia"  numData="[502, 635, 809, 947, 1402, 3634, 5268]"></highcharts-series>
-      <highcharts-series name="Africa"  numData="[106, 107, 111, 133, 221, 767, 1766]"></highcharts-series>
-      <highcharts-series name="Europe"   numData="[163, 203, 276, 408, 547, 729, 628]"></highcharts-series>
-      <highcharts-series name="America"   numData="[18, 31, 54, 156, 339, 818, 1201]"></highcharts-series>
-      <highcharts-series name="Oceania"   numData="[2, 2, 2, 6, 13, 30, 46]"></highcharts-series>
-    </highcharts-polymer>
-    -->
   </template>
   <script type="application/dart" src="main_app.dart"></script>
 </polymer-element>

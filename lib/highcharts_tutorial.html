@@ -1,0 +1,95 @@
+<link rel="import" href="../../packages/polymer/polymer.html">
+<link rel="import" href="../../packages/core_elements/core_collapse.html">
+<link rel="import" href="../../packages/polymer_highcharts/highcharts_polymer_component.html">
+<link rel="import" href="../../packages/polymer_highcharts/highcharts_series.html">
+<link rel="import" href="../../packages/polymer_highcharts/highcharts_x_axis.html">
+<link rel="import" href="../../packages/polymer_highcharts/highcharts_y_axis.html">
+
+<polymer-element name="highcharts-tutorial">
+  <template>
+    <link rel="stylesheet" href="css/sample.css">
+    <style>
+      .tutorial {
+        padding: 20px;
+      }
+      
+      .tutorial pre {
+        padding: 10px;
+        border: solid 1px #888;
+      }
+      
+      .tutorial h1 {
+        padding-top: 0;
+      }
+      
+      span.link {
+        color: blue;
+        text-decoration: underline; 
+        cursor: pointer; 
+      }
+      
+      .more-info {
+        padding: 10px;
+        background-color: #eee;
+      }
+      
+    </style>
+    
+    <div class="card tutorial">
+        Follow this tutorial to learn how to use Polymer Highcharts. 
+        <h2>1. Dart Dependency</h2>
+        <p>
+        Create a Dart Web Application with the Polymer library (<span class="link" on-click="{{newAppInfo}}">More info</span>)<br>
+        </p>
+        <core-collapse id="newAppInfo">
+          <div class="more-info">
+            Create a new Dart Project and choose the template "polymerapp - A web app built using polymer.dart"
+            <img src="../../packages/PolymerHighchartsTest/assets/newApp.jpg" style="display:block; height:400px">
+          </div>
+        </core-collapse>
+        <p>
+        Edit your <strong>pubspec.yaml</strong> as follows:
+        </p> 
+        <pre>
+          dependencies:
+            polymer_highcharts: any
+        </pre>
+        <h2>2. JS Dependencies</h2>
+        <p>
+        Polymer Highcharts uses the Highcharts js library. Add this lines to the main html of your application (index.html) in the head section:
+        </p>
+        <pre>
+          &lt;script src="packages/polymer_highcharts/js/standalone-framework.js"&gt;&lt;/script&gt;
+          &lt;script src="packages/polymer_highcharts/js/highcharts.js""&gt;&lt;/script&gt;
+          &lt;script src="packages/polymer_highcharts/js/highcharts-more.js""&gt;&lt;/script&gt;
+          &lt;script src="packages/polymer_highcharts/js/highcharts.src.SHADOWDOMFIX.js""&gt;&lt;/script&gt;
+        </pre>
+        <h2>3. Import Polymer Highcharts components</h2>
+        <p>
+        Add these imports where you want to use the components: 
+        </p>
+        <pre>
+          &lt;link rel="import" href="../../packages/polymer_highcharts/highcharts_polymer_component.html"&gt;
+          &lt;link rel="import" href="../../packages/polymer_highcharts/highcharts_series.html"&gt;
+          &lt;link rel="import" href="../../packages/polymer_highcharts/highcharts_x_axis.html"&gt;
+          &lt;link rel="import" href="../../packages/polymer_highcharts/highcharts_y_axis.html"&gt;
+        </pre>
+        <h2>4. Add a chart to your html</h2>
+        <p>
+        You can create a chart easily using the polymer components: 
+        </p>
+        <pre>
+          &lt;highcharts-polymer
+                chartTitle="Basic Bar" type="bar" creditsEnabled="false"
+                backgroundColor="rgba(0,0,0,0)"&gt;
+            &lt;highcharts-x-axis categories="['Africa', 'America', 'Asia', 'Europe', 'Oceania']"&gt;&lt;/highcharts-x-axis&gt;
+            &lt;highcharts-y-axis min="0" axisTitle=""&gt;&lt;/highcharts-y-axis&gt;
+            &lt;highcharts-series name="Year 1800" numData="[107, 31, 635, 203, 2]"&gt;&lt;/highcharts-series&gt;
+            &lt;highcharts-series name="Year 1900" numData="[133, 156, 947, 408, 6]"&gt;&lt;/highcharts-series&gt;
+            &lt;highcharts-series name="Year 2008" numData="[973, 914, 4054, 732, 34]"&gt;&lt;/highcharts-series&gt;
+          &lt;/highcharts-polymer&gt;
+        </pre>
+    </div>
+  </template>
+  <script type="application/dart" src="highcharts_tutorial.dart"></script>
+</polymer-element>

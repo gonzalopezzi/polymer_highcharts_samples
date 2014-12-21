@@ -1,0 +1,22 @@
+<link rel="import" href="../../packages/polymer/polymer.html">
+<link rel="import" href="../../packages/polymer_highcharts/highcharts_polymer_component.html">
+<link rel="import" href="../../packages/polymer_highcharts/highcharts_series.html">
+
+<polymer-element name="bubble-chart">
+  <template>
+    <link rel="stylesheet" href="css/sample.css">
+    <div class="card">
+      <highcharts-polymer 
+            chartTitle="Bubble Chart" type="bubble" creditsEnabled="false"
+            backgroundColor="rgba(0,0,0,0)">
+        <highcharts-series numData="{{bubbleSeries1}}"></highcharts-series>
+        <highcharts-series numData="{{bubbleSeries2}}"></highcharts-series>
+        <highcharts-series numData="{{bubbleSeries3}}"></highcharts-series>
+      </highcharts-polymer>
+    </div>
+    <div class="card code">
+      <pre>{{code}}</pre>
+    </div>
+  </template>
+  <script type="application/dart" src="bubble_chart.dart"></script>
+</polymer-element>

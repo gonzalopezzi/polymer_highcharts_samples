@@ -1,9 +1,3 @@
-<!--
-  Copyright (c) 2014, <your name>. All rights reserved. Use of this source code
-  is governed by a BSD-style license that can be found in the LICENSE file.
--->
-
-<!-- import polymer-element's definition -->
 <link rel="import" href="../../packages/polymer/polymer.html">
 <link rel="import" href="../../packages/polymer_highcharts/highcharts_polymer_component.html">
 <link rel="import" href="../../packages/polymer_highcharts/highcharts_series.html">
@@ -12,19 +6,28 @@
 
 <polymer-element name="basic-line">
   <template>
-    <highcharts-polymer chartTitle="Basic Line"  
-          subtitle="Monthly Average Temperature" 
-          type="line" borderColor="#CCC" creditsEnabled="false"
-          borderWidth="1" borderRadius="8" backgroundColor="rgba(0,0,0,0)">
-      <highcharts-x-axis categories="['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']"></highcharts-x-axis>
-      <highcharts-y-axis axisTitle="Temperatura (ºC)"></highcharts-y-axis>
-      <highcharts-series name="Tokyo"
-          type="line"
-          numData="[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]"></highcharts-series>
-      <highcharts-series name="New York"
-          type="line"
-          numData="[-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]"></highcharts-series>
-    </highcharts-polymer>
+    <link rel="stylesheet" href="css/sample.css">
+  
+    <div class="card">
+      <highcharts-polymer chartTitle="Basic Line"  
+            subtitle="Monthly Average Temperature" 
+            type="line" creditsEnabled="false"
+            backgroundColor="rgba(0,0,0,0)">
+        <highcharts-x-axis categories="['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']"></highcharts-x-axis>
+        <highcharts-y-axis axisTitle="Temperatura (ºC)"></highcharts-y-axis>
+        <highcharts-series name="Tokyo"
+            type="line"
+            numData="[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]"></highcharts-series>
+        <highcharts-series name="New York"
+            type="line"
+            numData="[-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]"></highcharts-series>
+      </highcharts-polymer>  
+    </div>
+  
+    <div class="card code">
+      <pre>{{code}}</pre>
+    </div>  
+    
   </template>
   <script type="application/dart" src="basic_line.dart"></script>
 </polymer-element>

@@ -1,0 +1,27 @@
+<!--
+  Copyright (c) 2014, <your name>. All rights reserved. Use of this source code
+  is governed by a BSD-style license that can be found in the LICENSE file.
+-->
+
+<!-- import polymer-element's definition -->
+<link rel="import" href="../../packages/polymer/polymer.html">
+<link rel="import" href="../../packages/polymer_highcharts/highcharts_polymer_component.html">
+<link rel="import" href="../../packages/polymer_highcharts/highcharts_series.html">
+
+<polymer-element name="pie-chart">
+  <template>
+    <link rel="stylesheet" href="css/sample.css">
+    <div class="card">
+      <highcharts-polymer chartTitle="Pie Chart" 
+            creditsEnabled="false"
+            backgroundColor="rgba(0,0,0,0)">
+        <highcharts-series name="Browser Share" type="pie"
+            data="{{pieChartData}}"></highcharts-series>
+      </highcharts-polymer>
+    </div>
+    <div class="card code">
+      <pre>{{code}}</pre>
+    </div>
+  </template>
+  <script type="application/dart" src="pie_chart.dart"></script>
+</polymer-element>

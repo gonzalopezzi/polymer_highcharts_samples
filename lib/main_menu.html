@@ -8,9 +8,27 @@
 
 <polymer-element name="main-menu">
   <template>
-    <ul>
+    <style>
+      .menu {
+        padding:0;
+        margin:0;
+      }
+      
+      .menu-item {
+        list-style-type: none;
+        cursor:pointer;
+        padding:10px;
+        margin:5px;
+      }
+      
+      .menu-item:hover {
+        font-weight: bold;
+      }
+      
+    </style>
+    <ul class="menu">
       <template repeat="{{item in menuItems}}">
-        <li data-state="{{item.state}}" on-click="{{menuItemClick}}">{{item.name}}</li>  
+        <li class="menu-item" data-state="{{item.state}}" on-click="{{menuItemClick}}">{{item.name}}</li>  
       </template>
     </ul>
   </template>
