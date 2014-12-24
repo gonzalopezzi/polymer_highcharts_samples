@@ -10,6 +10,7 @@ import 'package:PolymerHighchartsTest/bubble_chart.dart';
 import 'package:PolymerHighchartsTest/basic_bar.dart';
 import 'package:PolymerHighchartsTest/stacked_bar.dart';
 import 'package:PolymerHighchartsTest/stacked_area.dart';
+import 'package:PolymerHighchartsTest/dynamic_series.dart';
 import 'dart:html';
 
 @CustomTag('main-menu')
@@ -24,7 +25,8 @@ class MainMenu extends PolymerElement {
          new MenuItem ("bubbleChart", "Bubble Chart", new BubbleChart()), 
          new MenuItem ("basicBar", "Basic Bar", new BasicBar()), 
          new MenuItem ("stackedBar", "Stacked Bar", new StackedBar()), 
-         new MenuItem ("stackedArea", "Stacked Area", new StackedArea())
+         new MenuItem ("stackedArea", "Stacked Area", new StackedArea()), 
+         new MenuItem ("dynamicSeries", "Dynamic Series", new DynamicSeries())
   ]);
   
   @published @observable String state = "basicLine";
