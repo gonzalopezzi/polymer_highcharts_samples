@@ -1,0 +1,62 @@
+<link rel="import" href="../../packages/polymer/polymer.html">
+<link rel="import" href="../../packages/polymer_highcharts/highcharts_polymer_component.html">
+<link rel="import" href="../../packages/polymer_highcharts/highcharts_series.html">
+<link rel="import" href="../../packages/polymer_highcharts/highcharts_x_axis.html">
+<link rel="import" href="../../packages/polymer_highcharts/highcharts_y_axis.html">
+
+<polymer-element name="dynamic-series">
+  <template>
+    <link rel="stylesheet" href="css/sample.css">
+    <style>
+      .centered-button-container {
+        display:block;
+        text-align:center;
+      }
+      .big-button {
+        display:inline-block;
+        cursor: pointer;
+        width: 300px; 
+        height: 40px;
+        padding: 0;
+        line-height: 40px;
+        background-color: #526e9c;
+        color: white;
+        border-radius: 2px;
+        -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.65);
+        -moz-box-shadow:    0px 2px 4px 0px rgba(50, 50, 50, 0.65);
+        box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.65);
+      }
+      
+      .big-button:hover {
+        background-color: #456293;
+        -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.85);
+        -moz-box-shadow:    0px 2px 4px 0px rgba(50, 50, 50, 0.85);
+        box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.85);
+      }
+      
+    </style>
+  
+    <div class="card">
+      <highcharts-polymer chartTitle="Basic Line"  
+            subtitle="Monthly Average Temperature" 
+            type="line" creditsEnabled="false"
+            backgroundColor="rgba(0,0,0,0)">
+        <highcharts-y-axis axisTitle="Temperatura (ºC)"></highcharts-y-axis>
+        <template repeat="{{serie in mySeries}}">
+          <highcharts-series name="{{serie['name']}}" type="{{serie['type']}}" data="{{serie['data']}}"></highcharts-series>
+        </template>
+      </highcharts-polymer>  
+    </div>
+  
+    <div class="centered-button-container">
+      <div class="big-button" on-click="{{loadNewData}}">Load New Series</div>
+    </div>
+    
+  
+    <div class="card code">
+      <pre>{{code}}</pre>
+    </div>  
+    
+  </template>
+  <script type="application/dart" src="dynamic_series.dart"></script>
+</polymer-element>
