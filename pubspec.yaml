@@ -8,8 +8,7 @@ dependencies:
   browser: any
   polymer: '>=0.15.0 <0.16.0'
   core_elements: any
-  polymer_highcharts: #any 
-    path: C:/Gonzalo/trabajos/dart/PolymerHighcharts
+  polymer_highcharts: '0.1.0+6'
 transformers:
 - polymer:
     entry_points: web/index.html
