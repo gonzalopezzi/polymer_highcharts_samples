@@ -1,0 +1,83 @@
+<link rel="import" href="../../packages/polymer/polymer.html">
+<link rel="import" href="../../packages/polymer_highcharts/highcharts_polymer_component.html">
+<link rel="import" href="../../packages/polymer_highcharts/highcharts_series.html">
+<link rel="import" href="../../packages/polymer_highcharts/highcharts_axes.html">
+<link rel="import" href="../../packages/polymer_highcharts/highcharts_x_axis.html">
+<link rel="import" href="../../packages/polymer_highcharts/highcharts_y_axis.html">
+<link rel="import" href="../../packages/polymer_highcharts/highcharts_axis.html">
+
+<polymer-element name="multiple-axes">
+  <template>
+    <link rel="stylesheet" href="css/sample.css">
+  
+    <div class="card">
+      <highcharts-polymer chartTitle="Average Monthly Weather Data for Tokyo"  
+            type="line" creditsEnabled="false"
+            backgroundColor="rgba(0,0,0,0)"
+            zoomType="xy">
+        <highcharts-series id="Rainfall" 
+            name="Rainfall"
+            type="column"
+            yAxisId="rainfallYAxis"
+            numData="[49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]"></highcharts-series>
+        <highcharts-series id="SeaLevelPressure" 
+            name="Sea-Level Pressure"
+            type="spline"
+            yAxisId="seaLevelYAxis"
+            numData="[1016, 1016, 1015.9, 1015.5, 1012.3, 1009.5, 1009.6, 1010.2, 1013.1, 1016.9, 1018.2, 1016.7]"
+            moreOptions="{
+               'marker': {
+                 'enabled': false
+               }, 
+               'dashStyle': 'shortdot', 
+               'tooltip': {
+                 'valueSuffix': ' mb'
+               }
+            }"></highcharts-series>
+          <highcharts-series id="Temperature" 
+            name="Temperature"
+            type="spline"
+            yAxisId="temperatureYAxis"
+            numData="[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]"
+            moreOptions="{
+                  'tooltip': {
+                    'valueSuffix': ' C'
+                  }
+            }"></highcharts-series>
+        <highcharts-axes>
+          <highcharts-x-axis id="x1" categories="['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                                              'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']"></highcharts-x-axis>
+          <highcharts-y-axis id="temperatureYAxis" axisTitle="Temperature"  
+            opposite="true"
+            labels="{
+              'format': '{value}°C',
+              'style': {
+                  'color': 'AABBCC'
+              }
+            }"></highcharts-y-axis> 
+          <highcharts-y-axis id="rainfallYAxis" axisTitle="Rainfall"  
+            labels="{
+              'format': '{value} mm',
+              'style': {
+                  'color': '776655'
+              }
+            }"></highcharts-y-axis> 
+          <highcharts-y-axis id="seaLevelYAxis" axisTitle="Sea-Level Pressure"  
+            opposite="true"
+            labels="{
+              'format': '{value} mb',
+              'style': {
+                  'color': '7766EE'
+              }
+            }"></highcharts-y-axis> 
+        </highcharts-axes>
+      </highcharts-polymer>  
+    </div>
+  
+    <div class="card code">
+      <pre>{{code}}</pre>
+    </div>  
+    
+  </template>
+  <script type="application/dart" src="multiple_axes.dart"></script>
+</polymer-element>

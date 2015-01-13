@@ -37,7 +37,7 @@ class DynamicSeries extends PolymerElement {
     return (new List ())
         ..add({
           "name": "Tokyo", 
-          "type": "line", 
+          "type": "column", 
           "data": _generateRandomData (20)
         })
         ..add({
@@ -47,8 +47,33 @@ class DynamicSeries extends PolymerElement {
         });
   }
   
+  List _generateThreeRandomSeries() {
+    return (new List ())
+        ..add({
+          "name": "Tokyo", 
+          "type": "column", 
+          "data": _generateRandomData (20)
+        })
+        ..add({
+          "name": "New York", 
+          "type": "line", 
+          "data": _generateRandomData (20)
+        })
+        ..add({
+          "name": "London", 
+          "type": "line", 
+          "data": _generateRandomData (20)
+        });
+  }
+  
   void loadNewData (event, detail, target) {
-    this.mySeries = toObservable (_generateTwoRandomSeries());
+    Random random = new Random();
+    if (random.nextBool()) {
+      this.mySeries = toObservable (_generateTwoRandomSeries());
+    }
+    else {
+      this.mySeries = toObservable (_generateThreeRandomSeries());
+    }
   }
   
   
