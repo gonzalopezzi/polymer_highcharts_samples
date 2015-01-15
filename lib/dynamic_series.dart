@@ -4,6 +4,7 @@ library dynamic_series;
 
 import 'package:polymer/polymer.dart';
 import 'package:highcharts_options/chart_options.dart' as hc;
+import 'package:polymer_highcharts/highcharts_series.dart';
 import 'dart:html';
 import 'dart:math';
 
@@ -76,6 +77,10 @@ class DynamicSeries extends PolymerElement {
     }
   }
   
+  void removePoint () {
+    HighchartsSeries series = this.shadowRoot.querySelector('#Tokyo') as HighchartsSeries;
+    series.data[0].remove();
+  }
   
   List _generateRandomData (int n) {
     List data = new List ();
