@@ -8,8 +8,8 @@ dependencies:
   browser: any
   polymer: '>=0.15.0 <0.16.0'
   core_elements: any
-  polymer_highcharts: '>=0.2.0 < 0.3.0'
-  highcharts_options: '>=0.2.0 < 0.3.0' 
+  polymer_highcharts: '0.2.1+1'
+  highcharts_options: '0.2.1' 
 transformers:
 - polymer:
     entry_points: web/index.html
