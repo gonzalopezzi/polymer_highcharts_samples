@@ -11,7 +11,11 @@ import 'dart:math';
 @CustomTag('dynamic-series')
 class DynamicSeries extends PolymerElement {
   factory DynamicSeries () => new Element.tag('dynamic-series');
-  DynamicSeries.created() : super.created();
+  DynamicSeries.created() : super.created() {
+    List series = new List ();
+    Random random = new Random();
+    this.mySeries = toObservable (_generateTwoRandomSeries());
+  }
   
   @observable String code = 
       "<highcharts-polymer chartTitle=\"Basic Line\"\n" +   
@@ -29,9 +33,6 @@ class DynamicSeries extends PolymerElement {
   @override
   void attached () {
     super.attached();
-    List series = new List ();
-    Random random = new Random();
-    this.mySeries = toObservable (_generateTwoRandomSeries());
   }
   
   List _generateTwoRandomSeries() {
