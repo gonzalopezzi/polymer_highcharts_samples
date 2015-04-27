@@ -68,11 +68,15 @@ class DynamicSeries extends PolymerElement {
   
   void loadNewData (event, detail, target) {
     Random random = new Random();
-    if (random.nextBool()) {
+    double rand = random.nextDouble();
+    if (rand < 0.33) {
       this.mySeries = toObservable (_generateTwoRandomSeries());
     }
-    else {
+    else if (rand < 0.66) {
       this.mySeries = toObservable (_generateThreeRandomSeries());
+    }
+    else {
+      this.mySeries = new List ();
     }
   }
   

@@ -1,6 +1,7 @@
 <link rel="import" href="../../packages/polymer/polymer.html">
 <link rel="import" href="../../packages/polymer_highcharts/highcharts_polymer_component.html">
 <link rel="import" href="../../packages/polymer_highcharts/highcharts_series.html">
+<link rel="import" href="../../packages/polymer_highcharts/highcharts_no_series.html">
 <link rel="import" href="../../packages/polymer_highcharts/highcharts_x_axis.html">
 <link rel="import" href="../../packages/polymer_highcharts/highcharts_y_axis.html">
 
@@ -42,10 +43,13 @@
             type="line" creditsEnabled="false"
             backgroundColor="rgba(0,0,0,0)">
         <highcharts-y-axis axisTitle="Temperatura (ºC)"></highcharts-y-axis>
+        <template if="{{mySeries == null || mySeries.length == 0}}">
+          <highcharts-no-series></highcharts-no-series>
+        </template>
         <template repeat="{{serie in mySeries}}">
           <highcharts-series id="{{serie['name']}}" name="{{serie['name']}}" type="{{serie['type']}}" data="{{serie['data']}}"></highcharts-series>
         </template>
-      </highcharts-polymer>  
+      </highcharts-polymer>
     </div>
   
     <div class="centered-button-container">
