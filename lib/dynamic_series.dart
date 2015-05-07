@@ -9,6 +9,7 @@ import 'dart:math';
 
 @CustomTag('dynamic-series')
 class DynamicSeries extends PolymerElement {
+  
   factory DynamicSeries () => new Element.tag('dynamic-series');
   DynamicSeries.created() : super.created();
   
@@ -24,6 +25,7 @@ class DynamicSeries extends PolymerElement {
       "</highcharts-polymer>";
   
   @observable List mySeries;
+  @observable List myAxes;
   
   @override
   void attached () {
@@ -31,6 +33,7 @@ class DynamicSeries extends PolymerElement {
     List series = new List ();
     Random random = new Random();
     this.mySeries = toObservable (_generateTwoRandomSeries());
+    this.myAxes = toObservable (_generateTwoAxes());
   }
   
   List _generateTwoRandomSeries() {
@@ -38,12 +41,26 @@ class DynamicSeries extends PolymerElement {
         ..add({
           "name": "Tokyo", 
           "type": "column", 
+          "axis": "axis1",
           "data": _generateRandomData (20)
         })
         ..add({
           "name": "New York", 
-          "type": "line", 
+          "type": "line",
+          "axis": "axis2",
           "data": _generateRandomData (20)
+        });
+  }
+  
+  List _generateTwoAxes () {
+    return (new List ())
+        ..add({
+          "id": "axis1", 
+          "title": "Axis 1"
+        })
+        ..add({
+          "id": "axis2", 
+          "title": "Axis 2"
         });
   }
   
@@ -51,18 +68,37 @@ class DynamicSeries extends PolymerElement {
     return (new List ())
         ..add({
           "name": "Tokyo", 
-          "type": "column", 
+          "type": "column",
+          "axis": "axis1",
           "data": _generateRandomData (20)
         })
         ..add({
           "name": "New York", 
-          "type": "line", 
+          "type": "line",
+          "axis": "axis2",
           "data": _generateRandomData (20)
         })
         ..add({
           "name": "London", 
-          "type": "line", 
+          "type": "line",
+          "axis": "axis3",
           "data": _generateRandomData (20)
+        });
+  }
+  
+  List _generateThreeAxes () {
+    return (new List ())
+        ..add({
+          "id": "axis1", 
+          "title": "Axis 1"
+        })
+        ..add({
+          "id": "axis2", 
+          "title": "Axis 2"
+        })
+        ..add({
+          "id": "axis3", 
+          "title": "Axis 3"
         });
   }
   
@@ -71,12 +107,15 @@ class DynamicSeries extends PolymerElement {
     double rand = random.nextDouble();
     if (rand < 0.33) {
       this.mySeries = toObservable (_generateTwoRandomSeries());
+      this.myAxes = toObservable (_generateTwoAxes());
     }
     else if (rand < 0.66) {
       this.mySeries = toObservable (_generateThreeRandomSeries());
+      this.myAxes = toObservable (_generateThreeAxes());
     }
     else {
       this.mySeries = new List ();
+      this.myAxes   = new List ();
     }
   }
   
@@ -86,7 +125,7 @@ class DynamicSeries extends PolymerElement {
     Random random = new Random();
     for (int i = 0; i < n; i++) {
       data.add((new hc.Point ())
-                  ..x = i
+                  ..xDate = new DateTime.utc(2014).add(new Duration(days:i))
                   ..y = random.nextInt(100));
     }
     return data;

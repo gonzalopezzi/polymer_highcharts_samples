@@ -4,6 +4,7 @@
 <link rel="import" href="../../packages/polymer_highcharts/highcharts_no_series.html">
 <link rel="import" href="../../packages/polymer_highcharts/highcharts_x_axis.html">
 <link rel="import" href="../../packages/polymer_highcharts/highcharts_y_axis.html">
+<link rel="import" href="../../packages/polymer_highcharts/highcharts_axes.html">
 
 <polymer-element name="dynamic-series">
   <template>
@@ -42,12 +43,24 @@
             subtitle="Monthly Average Temperature" 
             type="line" creditsEnabled="false"
             backgroundColor="rgba(0,0,0,0)">
+        <highcharts-axes>
+          <highcharts-x-axis id="xAxis" axisTitle="Date" type="datetime"
+            dateTimeLabelFormats="{ 
+                                    'day': '%d-%m-%y',
+                                    'month': '%e - %G',
+                                    'year': '%G'
+                                }">
+          </highcharts-x-axis>
+          <template repeat="{{axis in myAxes}}">
+            <highcharts-y-axis id="{{axis['id']}}" axisTitle="{{axis['title']}}"></highcharts-y-axis>  
+          </template>
+        </highcharts-axes>
         <highcharts-y-axis axisTitle="Temperatura (ºC)"></highcharts-y-axis>
         <template if="{{mySeries == null || mySeries.length == 0}}">
           <highcharts-no-series></highcharts-no-series>
         </template>
         <template repeat="{{serie in mySeries}}">
-          <highcharts-series id="{{serie['name']}}" name="{{serie['name']}}" type="{{serie['type']}}" data="{{serie['data']}}"></highcharts-series>
+          <highcharts-series id="{{serie['name']}}" name="{{serie['name']}}" type="{{serie['type']}}" yAxisId="{{serie['axis']}}" data="{{serie['data']}}"></highcharts-series>
         </template>
       </highcharts-polymer>
     </div>
