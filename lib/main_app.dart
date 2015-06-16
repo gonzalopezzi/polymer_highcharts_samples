@@ -3,6 +3,7 @@
 
 import 'package:polymer/polymer.dart';
 import 'package:highcharts_options/chart_options.dart';
+import 'package:polymer_highcharts/highcharts_polymer_component.dart';
 import 'dart:html';
 
 /// A Polymer `<main-app>` element.
@@ -38,12 +39,13 @@ class MainApp extends PolymerElement {
   MainApp.created() : super.created();
   
   void attached () {
+    HighchartsPolymerComponent.DEBUG = true;
   }
 
   void changeSomething (_) {
     basicLineChartOptions.title = (new Title ()..text = "New Title");
   }
-  
+
   void menuItemSelectHandler (event, detail, target) {
     appState = detail["state"];
     pageName = detail["stateName"];
@@ -51,5 +53,5 @@ class MainApp extends PolymerElement {
     mainContent.children.clear();
     mainContent.children.add(detail["selectedMenuItem"]);
   }
-  
+
 }

@@ -43,7 +43,8 @@
             backgroundColor="rgba(0,0,0,0)">
         <highcharts-y-axis axisTitle="Temperatura (ºC)"></highcharts-y-axis>
         <template repeat="{{serie in mySeries}}">
-          <highcharts-series id="{{serie['name']}}" name="{{serie['name']}}" type="{{serie['type']}}" data="{{serie['data']}}"></highcharts-series>
+          <highcharts-series id="{{serie['name']}}" name="{{serie['name']}}" 
+            type="{{serie['type']}}" data="{{serie['data']}}"></highcharts-series>
         </template>
       </highcharts-polymer>  
     </div>
